@@ -8,11 +8,11 @@
 
 
 
-virtuabotixRTC myRTC(4, 3, 2); //If you change the wiring change the pins here also
+virtuabotixRTC myRTC(7, 6, 5); //If you change the wiring change the pins here also
 RTC this_rtc;
 String menu[] = {"Time    ","Temp    ","Fan      ","Position    ","SetTemp    ","SetFan    "};
 
-String MainMenuClass::check_value(int & position)
+String MainMenuClass::check_value(int & position) //tutaj odbywa sie zczytywanie z urzadzen
 {
 	switch (position)
 	{
@@ -25,22 +25,17 @@ String MainMenuClass::check_value(int & position)
 	return "                 ";
 }
 
-void MainMenuClass::init(LiquidCrystal_I2C & lcd)
+void MainMenuClass::init(LiquidCrystal_I2C & lcd) //inicjacja menu
 {
-	
 	lcd.setCursor(0, 0);
 	lcd.print(menu[0]);
 	lcd.setCursor(0, 1);
 	lcd.print("");
 	
-	
-
-
 }
 
 void MainMenuClass::show_position(LiquidCrystal_I2C & lcd, int & pos)
 {
-	
 	lcd.setCursor(0, 0);
 	lcd.print(menu[pos]);
 	lcd.setCursor(0, 1);

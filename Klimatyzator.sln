@@ -19,6 +19,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DS1302_LCD", "..\DS1302_LCD
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "clock", "..\..\..\Downloads\clock\clock.vcxproj", "{3D936B98-898E-4B51-A2DE-8951A2A85FA2}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "powerdown", "..\powerdown\powerdown.vcxproj", "{ACBE2DC7-6C7E-41DB-B537-E4018F909A84}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "powerdown2", "..\powerdown2\powerdown2.vcxproj", "{9D3784DE-31B2-4168-BD80-58FA8D67752A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -57,6 +61,14 @@ Global
 		{3D936B98-898E-4B51-A2DE-8951A2A85FA2}.Debug|x86.Build.0 = Debug|Win32
 		{3D936B98-898E-4B51-A2DE-8951A2A85FA2}.Release|x86.ActiveCfg = Release|Win32
 		{3D936B98-898E-4B51-A2DE-8951A2A85FA2}.Release|x86.Build.0 = Release|Win32
+		{ACBE2DC7-6C7E-41DB-B537-E4018F909A84}.Debug|x86.ActiveCfg = Debug|Win32
+		{ACBE2DC7-6C7E-41DB-B537-E4018F909A84}.Debug|x86.Build.0 = Debug|Win32
+		{ACBE2DC7-6C7E-41DB-B537-E4018F909A84}.Release|x86.ActiveCfg = Release|Win32
+		{ACBE2DC7-6C7E-41DB-B537-E4018F909A84}.Release|x86.Build.0 = Release|Win32
+		{9D3784DE-31B2-4168-BD80-58FA8D67752A}.Debug|x86.ActiveCfg = Debug|Win32
+		{9D3784DE-31B2-4168-BD80-58FA8D67752A}.Debug|x86.Build.0 = Debug|Win32
+		{9D3784DE-31B2-4168-BD80-58FA8D67752A}.Release|x86.ActiveCfg = Release|Win32
+		{9D3784DE-31B2-4168-BD80-58FA8D67752A}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
