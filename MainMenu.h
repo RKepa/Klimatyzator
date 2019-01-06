@@ -18,6 +18,7 @@
  public:
 	void init(LiquidCrystal_I2C & lcd);
 	void show_position(LiquidCrystal_I2C & lcd, int & pos);
+	void set_temperature(double temperature);
 
 	
 };

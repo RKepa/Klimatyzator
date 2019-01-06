@@ -19,7 +19,9 @@
 
 #include "MainMenu.h"
 #include "Potentiometer.h"
+#include "FAN.h"
 #include <virtuabotixRTC.h>
+#include <DHT.h>
 #include <avr/sleep.h>
 #include <time.h>
 
@@ -27,13 +29,15 @@
 #define POTENCJOMETR_PIN PC1
 #define KEY1 (1<<PD2)
 
+
 const int LED = 13;                         //LED on pin 13
 const int LED1 = 12;
 uint16_t c = 1;                             //licznik debauncera
 static int menu_pos = 0;                    //poczatkowa pozycja w menu
-int menusize = 6;                           //wielkosc menu
+int menusize = 5;                           //wielkosc menu
 
 LiquidCrystal_I2C lcd(0x27, 16, 4);
+DHT myDHT;
 
 void setup()
 {
@@ -45,7 +49,6 @@ void setup()
 	lcd.init();
 	lcd.backlight();
 	Serial.begin(9600);
-
 
 	cli();                        //Zatrzymanie przerwan
 	TCCR1A = 0;					  // set entire TCCR1A register to 0
@@ -76,10 +79,23 @@ void setup()
 	pinMode(LED, OUTPUT);          //make the led pin an output
 	digitalWrite(LED, LOW);        //drive it low so it doesn't source current
 
+//-------------------------fan setup---------------------------------
+
+	pinMode(8, OUTPUT);		//big fan
+	digitalWrite(8, HIGH);
+
+	pinMode(A0, OUTPUT);	//small fan
+	analogWrite(A0, 0);
+
+//------------------------dht setup----------------------------------
+
+	myDHT.setup(3);
+
 }
 
 void goToSleep(void)
 {
+	static_fan.turn_off();
 	lcd.clear();
 	lcd.noBacklight();
 	digitalWrite(LED, HIGH);
@@ -137,6 +153,9 @@ ISR(TIMER1_COMPA_vect) {// przerwanie z timera wykonuje sie ok 0.1 sekundy
 // Add the main program code into the continuous loop() function
 void loop()
 {
+	double temperature = myDHT.getTemperature();
+	static_fan.check_temperature(temperature);
+	main_menu.set_temperature(temperature);
 	main_menu.show_position(lcd, menu_pos);
 	if (!(PIND & KEY1)) {
 		debaunce();
